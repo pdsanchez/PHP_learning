@@ -5,6 +5,7 @@ return
     <select name=\"answer\">
       <option value=\"yes\">Yes</option>
       <option value=\"no\">No</option>
+      <option value=\"maybe\">Maybe</option>
     </select>
     <input type=\"submit\" value=\"post\" name=\"quiz-submitted\">
   </form>";
