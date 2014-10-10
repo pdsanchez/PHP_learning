@@ -9,7 +9,7 @@ if ($v1 == true) {
 echo "<br>";
 
 $v2 = new stdClass();
-#echo $v2;
+#Esto es prueba git echo $v2;
 
 if ($v2 == false) {
   echo " - ok false";
