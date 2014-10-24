@@ -1,6 +1,6 @@
 <?php
 if (isset($allEntries) === false) {
-  trigger_error("view/admin/entries-html.php needs $allEntries");
+  trigger_error('view/admin/entries-html.php needs $allEntries');
 }
 
 $entriesAsHTML = "<ul>";

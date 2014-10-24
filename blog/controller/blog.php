@@ -8,6 +8,8 @@
     $entryData = $entryTable->getEntry($entryId);
     
     $blogOut = include_once("view/entry-html.php");
+    
+    $blogOut .= include_once("controller/comments.php");
   }
   else {
     $entries = $entryTable->getAllEntries();

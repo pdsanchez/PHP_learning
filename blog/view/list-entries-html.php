@@ -1,7 +1,7 @@
 <?php
 $entriesFound = isset($entries);
 if ($entriesFound === false) {
-  trigger_error("view/list-entries-html.php needs $entries");
+  trigger_error('view/list-entries-html.php needs $entries');
 }
 
 $entriesHTML = "<ul id='blog-entries'>";

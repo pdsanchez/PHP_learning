@@ -14,7 +14,16 @@ $dbpwd = "";
 $db = new PDO($dbinfo, $dbuser, $dbpwd);
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$pagedata->content .= include_once("controller/blog.php");
+$pageRequested = isset($_GET["page"]);
+$controller = "blog";
+if ($pageRequested) {
+  if($_GET["page"] === "search") {
+    $controller = "search";
+  }
+}
+
+$pagedata->content .= include_once("view/search-form-html.php");
+$pagedata->content .= include_once("controller/$controller.php");
 
 $page = include_once("view/page.php");
 echo $page;

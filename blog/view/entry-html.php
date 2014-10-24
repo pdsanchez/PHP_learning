@@ -1,7 +1,7 @@
 <?php
   $entryDataFound = isset($entryData);
   if ($entryDataFound === false) {
-    trigger_error("view/entry-html.php needs $entryData object");
+    trigger_error('view/entry-html.php needs $entryData object');
   }
   
   return "<article>
