@@ -6,6 +6,7 @@ include_once("model/PageData.class.php");
 $pagedata = new PageData();
 $pagedata->title = "Blog";
 $pagedata->addCss("css/blog.css");
+$pagedata->addScript("js/editor.js");
 $pagedata->content = include_once("view/admin/admin-navigation.php");
 
 $dbinfo = "mysql:host=localhost;dbname=simple_blog";

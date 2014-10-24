@@ -11,6 +11,7 @@
               values(?, ?)";
       $data = array($title, $entry);
       $stmt = $this->makeStatement($sql, $data);
+      return $this->db->lastInsertId();
     }
     
     public function getAllEntries() {
@@ -26,6 +27,19 @@
       $stmt = $this->makeStatement($sql, $data);
       
       return $stmt->fetchObject();
+    }
+    
+    public function deleteEntry($id) {
+      $sql = "delete from blog_entry where entry_id = ?";
+      $data = array($id);
+      $this->makeStatement($sql, $data);
+    }
+    
+    public function updateEntry($id, $title, $entry) {
+      $sql = "update blog_entry set title=?, entry_text=? where entry_id=?";
+      $data = array($title, $entry, $id);
+      $stmt = $this->makeStatement($sql, $data);
+      return $stmt;
     }
     
     private function makeStatement($sql, $data = NULL) {
