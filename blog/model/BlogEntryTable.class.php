@@ -26,9 +26,16 @@ class BlogEntryTable extends Table {
   }
   
   public function deleteEntry($id) {
+    $this->deleteCommentsById($id);
     $sql = "delete from blog_entry where entry_id = ?";
     $data = array($id);
     $this->makeStatement($sql, $data);
+  }
+  
+  private function deleteCommentsById($id) {
+    include_once("model/CommentTable.class.php");
+    $comments = new CommentTable($this->db);
+    $comments->deleteEntryById($id);
   }
   
   public function updateEntry($id, $title, $entry) {

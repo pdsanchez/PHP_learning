@@ -26,5 +26,17 @@ return "
         <p id='editor-msg'>$entryData->message</p>
       </fieldset>
     </fieldset>
-  </form>";
+  </form>
+  <script type='text/javascript' src='js/tinymce/tinymce.min.js'></script>
+  <script>
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'image',
+      setup: function(editor) {
+        editor.on('change', function(e) {
+          updateEditorMsg();
+        });
+      }
+    });
+  </script>";
 ?>

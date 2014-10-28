@@ -7,7 +7,7 @@ $pagedata = new PageData();
 $pagedata->title = "Blog";
 $pagedata->addCss("css/blog.css");
 $pagedata->addScript("js/editor.js");
-$pagedata->content = include_once("view/admin/admin-navigation.php");
+//$pagedata->content = include_once("view/admin/admin-navigation.php");
 
 $dbinfo = "mysql:host=localhost;dbname=simple_blog";
 $dbuser = "user";
@@ -15,15 +15,28 @@ $dbpwd = "";
 $db = new PDO($dbinfo, $dbuser, $dbpwd);
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$navClicked = isset($_GET["page"]);
-if ($navClicked) {
-  $ctl = $_GET["page"];
-}
-else {
-  $ctl = "entries";
-}
-$pagedata->content .= include_once("controller/admin/$ctl.php");
+//$navClicked = isset($_GET["page"]);
+//if ($navClicked) {
+//  $ctl = $_GET["page"];
+//}
+//else {
+//  $ctl = "entries";
+//}
 
+include_once("model/AdminUser.class.php");
+$admin = new AdminUser();
+$pagedata->content = include_once("controller/admin/login.php");
+if($admin->isLoggedIn()) {
+  $pagedata->content .= include_once("view/admin/admin-navigation.php");
+  $navClicked = isset($_GET["page"]);
+  if ($navClicked) {
+    $ctl = $_GET["page"];
+  }
+  else {
+    $ctl = "entries";
+  }
+  $pagedata->content .= include_once("controller/admin/$ctl.php");
+}
 
 $page = include_once("view/page.php");
 echo $page;

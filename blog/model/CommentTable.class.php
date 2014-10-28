@@ -13,5 +13,11 @@ class CommentTable extends Table {
     $data = array($id);
     return $this->makeStatement($sql, $data);
   }
+  
+  public function deleteEntryById($id) {
+    $sql = "delete from comment where entry_id = ?";
+    $data = array($id);
+    $stmt = $this->makeStatement($sql, $data);
+  }
 }
 ?>
